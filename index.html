@@ -353,7 +353,7 @@
   .final-prize img{max-width:100%;max-height:340px;position:relative;z-index:1;
     filter:drop-shadow(0 26px 44px rgba(0,0,0,.6));animation:prizeFloat 6s ease-in-out infinite}
   @keyframes prizeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-  .final-prize.noimg::after{content:"premios.jpg";font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.1em;
+  .final-prize.noimg::after{content:"premios.png";font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.1em;
     color:var(--ink-faint);border:1px dashed var(--glass-line);border-radius:16px;padding:3rem 2.4rem}
   .play-wrap{display:inline-flex;flex-direction:column;align-items:flex-start;gap:.9rem}
   .play-pulse{position:relative}
@@ -697,7 +697,7 @@
           </div>
           <div class="final-prize">
             <!-- imagen SIN fondo en la raíz: premios.jpg (si es transparente, idealmente .png) -->
-            <img src="premios.jpg" alt="Premios del CTF: kit gamer, polera hacker y merch COMSOC" onerror="this.style.display='none';this.parentElement.classList.add('noimg')">
+            <img src="premios.png" alt="Premios del CTF: kit gamer, polera hacker y merch COMSOC" onerror="this.style.display='none';this.parentElement.classList.add('noimg')">
           </div>
         </div>
       </div>
