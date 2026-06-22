@@ -126,6 +126,25 @@
   .nav-links a.link{font-family:"JetBrains Mono",monospace;font-size:.82rem;letter-spacing:.08em;color:var(--ink-mute);transition:color .25s}
   .nav-links a.link:hover{color:var(--ink)}
   .nav-links a.link::before{content:"// ";color:var(--ink-faint)}
+  /* mobile menu */
+  .nav-toggle{display:none;width:42px;height:42px;border:1px solid var(--glass-line);border-radius:9px;background:rgba(16,21,33,.5);
+    cursor:pointer;padding:0;place-items:center;gap:5px;flex-direction:column}
+  .nav-toggle span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-mobile{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;
+    background:rgba(6,8,14,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--glass-line);
+    padding:.6rem clamp(20px,5vw,52px) 1.1rem;gap:.1rem;
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform .3s var(--ease),opacity .3s}
+  .nav-mobile.open{display:flex;transform:none;opacity:1;pointer-events:auto}
+  .nav-mobile a{font-family:"JetBrains Mono",monospace;font-size:.9rem;letter-spacing:.06em;color:var(--ink-mute);
+    padding:.85rem .4rem;border-bottom:1px solid rgba(160,185,225,.08);transition:color .2s,padding-left .2s}
+  .nav-mobile a::before{content:"// ";color:var(--ink-faint)}
+  .nav-mobile a:hover{color:var(--ink);padding-left:.9rem}
+  .nav-mobile a.mob-cta{margin-top:.8rem;border:0;color:var(--void);background:var(--scouter);text-align:center;
+    border-radius:6px;font-family:"Chakra Petch",sans-serif;font-weight:700;text-transform:uppercase;padding:.85rem}
+  .nav-mobile a.mob-cta::before{content:""}
 
   /* ============ HERO ============ */
   .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:90px 0 60px;overflow:hidden}
@@ -366,13 +385,18 @@
   /* allies / sponsors */
   .allies{position:relative;z-index:2;padding-bottom:2.4rem;margin-bottom:2.2rem;border-bottom:1px solid var(--glass-line);text-align:center}
   .allies .eyebrow{justify-content:center;margin-bottom:1.4rem}
-  .ally-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1rem}
-  .ally{flex:0 1 170px;min-width:140px;height:100px;border-radius:12px;display:grid;place-items:center;
+  .marquee{position:relative;overflow:hidden;width:100%;
+    -webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .ally-track{display:flex;align-items:center;gap:1.8rem;width:max-content;animation:marquee 38s linear infinite}
+  .marquee:hover .ally-track{animation-play-state:paused}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ally{flex:0 0 auto;width:clamp(190px,24vw,250px);height:clamp(110px,14vw,138px);border-radius:14px;display:grid;place-items:center;
     background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(8px);
-    font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
-    filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s,transform .3s,border-color .3s}
-  .ally:hover{filter:grayscale(0);opacity:1;transform:translateY(-3px);border-color:rgba(255,138,30,.4)}
-  .ally img{max-width:75%;max-height:70%;object-fit:contain}
+    font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);
+    filter:grayscale(1);opacity:.8;transition:filter .3s,opacity .3s,transform .3s,border-color .3s}
+  .ally:hover{filter:grayscale(0);opacity:1;transform:translateY(-4px);border-color:rgba(255,138,30,.45)}
+  .ally img{max-width:78%;max-height:72%;object-fit:contain}
 
   /* ============ responsive ============ */
   @media (max-width:980px){
@@ -381,7 +405,8 @@
     .hero-orn{display:none}
   }
   @media (max-width:880px){
-    .nav-links .link{display:none}
+    .nav-links{display:none}
+    .nav-toggle{display:flex}
     .tl-row{grid-template-columns:1fr;gap:.5rem}
     .tl-row .tl-when{display:flex;gap:1rem;align-items:baseline}
     .reg-card{grid-template-columns:1fr}
@@ -396,6 +421,17 @@
     .play-wrap{align-items:center;margin:0 auto}
     .cta{flex:1 1 240px;justify-content:center}
     .about-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .countdown{display:block;padding:1.1rem 1rem}
+    .cd-units{gap:.45rem}
+    .cd-cell{min-width:0;flex:1;padding:.7rem .25rem .5rem}
+    .hero-cta{width:100%}
+    .cta{flex:1 1 100%}
+    .conf-banner{flex-direction:column;align-items:flex-start}
+    .carousel{gap:.1rem}
+    .cr-arrow{width:40px;height:40px;font-size:1.4rem}
+    .ally{width:clamp(160px,62vw,210px)}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -427,9 +463,22 @@
         <a class="link" href="#cronograma">cronograma</a>
         <a class="link" href="#speakers">speakers</a>
         <a class="link" href="#registro">registro</a>
+        <a class="link" href="#certificado">certificado</a>
         <a class="btn scouter" href="#jugar">¡Jugar CTF!</a>
       </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+    <nav class="nav-mobile" id="navMobile">
+      <a href="#sobre">Sobre el torneo</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#registro">Registro</a>
+      <a href="#certificado">Certificado</a>
+      <a href="#aliados">Aliados</a>
+      <a class="mob-cta" href="#jugar">¡Jugar CTF!</a>
+    </nav>
   </header>
 
   <main>
@@ -690,14 +739,22 @@
   <footer>
     <div class="wrap">
       <!-- TODO: coloca los logos en la carpeta /aliados con el nombre indicado en cada src -->
-      <div class="allies reveal">
+      <div class="allies reveal" id="aliados">
         <span class="eyebrow">Con el respaldo de</span>
-        <div class="ally-row">
-          <div class="ally"><img src="aliados/comsoc.png" alt="COMSOC PUCP" loading="lazy" onerror="this.outerHTML='COMSOC PUCP'"></div>
-          <div class="ally"><img src="aliados/aliado1.png" alt="Aliado 01" loading="lazy" onerror="this.outerHTML='Aliado 01'"></div>
-          <div class="ally"><img src="aliados/aliado2.png" alt="Aliado 02" loading="lazy" onerror="this.outerHTML='Aliado 02'"></div>
-          <div class="ally"><img src="aliados/aliado3.png" alt="Aliado 03" loading="lazy" onerror="this.outerHTML='Aliado 03'"></div>
-          <div class="ally"><img src="aliados/aliado4.png" alt="Aliado 04" loading="lazy" onerror="this.outerHTML='Aliado 04'"></div>
+        <div class="marquee">
+          <div class="ally-track">
+            <div class="ally"><img src="aliados/comsoc.png" alt="COMSOC PUCP" loading="lazy" onerror="this.outerHTML='COMSOC PUCP'"></div>
+            <div class="ally"><img src="aliados/aliado1.png" alt="Aliado 01" loading="lazy" onerror="this.outerHTML='Aliado 01'"></div>
+            <div class="ally"><img src="aliados/aliado2.png" alt="Aliado 02" loading="lazy" onerror="this.outerHTML='Aliado 02'"></div>
+            <div class="ally"><img src="aliados/aliado3.png" alt="Aliado 03" loading="lazy" onerror="this.outerHTML='Aliado 03'"></div>
+            <div class="ally"><img src="aliados/aliado4.png" alt="Aliado 04" loading="lazy" onerror="this.outerHTML='Aliado 04'"></div>
+            <!-- copia para el bucle continuo -->
+            <div class="ally" aria-hidden="true"><img src="aliados/comsoc.png" alt="" loading="lazy" onerror="this.outerHTML='COMSOC PUCP'"></div>
+            <div class="ally" aria-hidden="true"><img src="aliados/aliado1.png" alt="" loading="lazy" onerror="this.outerHTML='Aliado 01'"></div>
+            <div class="ally" aria-hidden="true"><img src="aliados/aliado2.png" alt="" loading="lazy" onerror="this.outerHTML='Aliado 02'"></div>
+            <div class="ally" aria-hidden="true"><img src="aliados/aliado3.png" alt="" loading="lazy" onerror="this.outerHTML='Aliado 03'"></div>
+            <div class="ally" aria-hidden="true"><img src="aliados/aliado4.png" alt="" loading="lazy" onerror="this.outerHTML='Aliado 04'"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -711,6 +768,23 @@
 (function(){
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  /* ---------- Menú móvil (barra desplegable) ---------- */
+  (function(){
+    var btn=document.getElementById("navToggle"), menu=document.getElementById("navMobile");
+    if(!btn||!menu)return;
+    function toggle(open){
+      var willOpen = open===undefined ? !menu.classList.contains("open") : open;
+      menu.classList.toggle("open",willOpen);
+      btn.classList.toggle("open",willOpen);
+      btn.setAttribute("aria-expanded",willOpen?"true":"false");
+    }
+    btn.addEventListener("click",function(){toggle();});
+    [].forEach.call(menu.querySelectorAll("a"),function(a){a.addEventListener("click",function(){toggle(false);});});
+    document.addEventListener("click",function(e){
+      if(menu.classList.contains("open") && !menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
+    });
+  })();
 
   /* ---------- Countdown: Vie 24 Jul 2026, 12:00 PM (Perú, GMT-5) ---------- */
   var target = new Date("2026-07-24T12:00:00-05:00").getTime();
