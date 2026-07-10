@@ -1,25 +1,76 @@
 .testimonial-container {
   width: 100%;
-  max-width: 56rem;
+  max-width: min(56rem, 100%);
   padding: 1rem 0 2rem;
   margin: 0 auto;
+  overflow: hidden; /* evita scroll horizontal por translateX de las cards */
+  box-sizing: border-box;
 }
 
 .testimonial-grid {
   display: grid;
   gap: 3rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .image-container {
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: 22rem;
   perspective: 1000px;
+  overflow: hidden; /* recorta fotos laterales del carousel */
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .image-container {
     height: 24rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonial-container {
+    padding: 0.5rem 0 1.25rem;
+    max-width: 100%;
+  }
+
+  .testimonial-grid {
+    gap: 1.25rem;
+  }
+
+  .image-container {
+    height: 16.5rem;
+  }
+
+  .testimonial-content {
+    min-height: 0;
+  }
+
+  .name {
+    font-size: 1.35rem !important;
+  }
+
+  .designation {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.85rem;
+  }
+
+  .quote {
+    font-size: 0.95rem !important;
+    line-height: 1.55;
+  }
+
+  .arrow-buttons {
+    padding-top: 1.25rem;
+    gap: 0.85rem;
+  }
+
+  .arrow-button {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }
 

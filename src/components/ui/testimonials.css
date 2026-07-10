@@ -2,11 +2,12 @@
 
 .ts-root {
   width: 100%;
-  max-width: 72rem;
+  max-width: min(72rem, 100%);
   margin: 0 auto;
   padding: 0 0 0.25rem;
   text-align: center;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .ts-title {
@@ -121,18 +122,43 @@
 }
 
 @media (max-width: 639px) {
+  .ts-root {
+    max-width: 100%;
+  }
+
+  .ts-title {
+    font-size: clamp(1.45rem, 6.5vw, 1.9rem);
+  }
+
+  .ts-subtitle {
+    font-size: 0.9rem;
+    padding: 0 0.25rem;
+  }
+
+  .ts-panel {
+    margin-top: 1.5rem;
+  }
+
+  .ts-grid {
+    gap: 1.35rem;
+  }
+
+  .ts-cell {
+    padding: 0.25rem;
+  }
+
   .ts-cell img {
-    max-width: 18rem !important;
-    max-height: 11rem !important;
+    max-width: 11.5rem !important;
+    max-height: 5.5rem !important;
   }
 
   .ts-cell img.ts-logo-square {
-    max-width: 10rem !important;
-    max-height: 10rem !important;
+    max-width: 5.5rem !important;
+    max-height: 5.5rem !important;
   }
 
   .ts-cell img.ts-logo-sm {
-    max-width: 13rem !important;
-    max-height: 5.5rem !important;
+    max-width: 9.5rem !important;
+    max-height: 3.75rem !important;
   }
 }

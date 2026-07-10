@@ -41,10 +41,13 @@ export interface CircularTestimonialsProps {
 }
 
 function calculateGap(width: number) {
+  // En móvil: gap pequeño para no empujar fuera del viewport
+  if (width < 480) return Math.max(12, Math.round(width * 0.06));
+  if (width < 768) return Math.max(20, Math.round(width * 0.08));
   const minWidth = 1024;
   const maxWidth = 1456;
-  const minGap = 60;
-  const maxGap = 86;
+  const minGap = 48;
+  const maxGap = 72;
   if (width <= minWidth) return minGap;
   if (width >= maxWidth)
     return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
