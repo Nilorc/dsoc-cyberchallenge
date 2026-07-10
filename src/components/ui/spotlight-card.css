@@ -1,0 +1,67 @@
+/* GlowCard — borde con color al acercar el cursor, sin sombra */
+.glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+  --glow-rgb: 255, 138, 30;
+  position: relative;
+  border-radius: 16px;
+  background: rgba(12, 12, 14, 0.78);
+  isolation: isolate;
+}
+
+.glow-card__border {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    420px circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-rgb), calc(0.95 * var(--glow-opacity))),
+    rgba(var(--glow-rgb), calc(0.25 * var(--glow-opacity))) 35%,
+    transparent 55%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.glow-card__body {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 12, 14, 0.92);
+}
+
+/* Variante: solo borde estático suave (sin JS) */
+.glow-edge {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 12, 14, 0.78);
+  box-shadow: none !important;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.glow-edge:hover,
+.glow-edge:focus-within {
+  border-color: rgba(255, 138, 30, 0.65);
+  background: rgba(14, 14, 16, 0.88);
+  box-shadow: none !important;
+}
+
+.glow-edge.is-scouter:hover,
+.glow-edge.is-scouter:focus-within {
+  border-color: rgba(31, 201, 166, 0.65);
+}

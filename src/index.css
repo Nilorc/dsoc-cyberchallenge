@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* shadcn / 21st theme tokens (Tailwind v4 @theme) */
+@theme {
+  --color-background: #04050a;
+  --color-foreground: #f5f5f5;
+  --color-card: #0c0c0e;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #27272a;
+  --color-primary: #ff8a1e;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+}
+
+:root {
+  --brand-primary: #ff8a1e;
+  --brand-accent: #1fc9a6;
+  --brand-void: #04050a;
+  --font-display: "Chakra Petch", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --ink: #f5f5f5;
+  /* shadcn CSS variables (compat) */
+  --background: #04050a;
+  --foreground: #f5f5f5;
+  --card: #0c0c0e;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+}
+
+/* ============ Countdown B/N profesional ============ */
+#flip-clock-root {
+  display: block;
+  width: 100%;
+}
+
+.fc-root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0.5rem 0.55rem;
+  font-family: var(--font-body);
+}
+
+.fc-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fc-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.fc-digit {
+  position: relative;
+  width: clamp(2.4rem, 3.6vw, 3rem);
+  height: clamp(3.1rem, 4.6vw, 3.9rem);
+  overflow: hidden;
+  border-radius: 6px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  font-family: var(--font-body);
+  font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.fc-digit-base,
+.fc-digit-flip {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
+  text-shadow: none;
+}
+
+.fc-digit-base {
+  opacity: 0.15;
+  z-index: 0;
+  color: #fff;
+}
+
+.fc-digit-flip {
+  z-index: 1;
+  opacity: 1;
+  color: #fff;
+}
+
+.fc-digit-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.fc-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  min-height: 0.85em;
+}
+
+.fc-colon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.05rem 1.15rem;
+  min-width: 0.45rem;
+}
+
+.fc-colon i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+  animation: none;
+}
+
+.fc-colon i:last-child {
+  animation: none;
+}
+
+.fc-done,
+.fc-error {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: none;
+}
+
+.fc-error {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 560px) {
+  .fc-digit {
+    width: 2.15rem;
+    height: 2.85rem;
+    font-size: 1.4rem;
+  }
+  .fc-label {
+    font-size: 0.58rem;
+  }
+  .fc-colon {
+    padding-bottom: 0.95rem;
+  }
+}
