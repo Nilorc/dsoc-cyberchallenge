@@ -24,14 +24,24 @@ Salida en `dist/`.
 
 ## Deploy en Vercel
 
-1. Importar el repo: [Nilorc/dsoc-cyberchallenge](https://github.com/Nilorc/dsoc-cyberchallenge)
-2. **Root Directory:** raíz del repo (donde está `package.json`)
-3. **Framework Preset:** Vite (o dejar auto-detect)
-4. **Build Command:** `npm run build`
-5. **Output Directory:** `dist`
-6. **Install Command:** `npm install`
+### Ajustes del proyecto (Dashboard → Settings → Build & Development)
 
-Cada push a `main` dispara un redeploy automático si el proyecto de Vercel está conectado a este repo.
+Si el deploy falla, **sobrescribe** la configuración antigua del sitio estático:
+
+| Setting | Valor |
+|---------|--------|
+| **Framework Preset** | `Vite` |
+| **Root Directory** | *(vacío / `.` — la raíz del repo)* |
+| **Build Command** | `npm run build` *(Override ON)* |
+| **Output Directory** | `dist` *(Override ON)* |
+| **Install Command** | `npm install` *(Override ON)* |
+| **Node.js Version** | `20.x` |
+
+1. Importar o reconectar el repo: [Nilorc/dsoc-cyberchallenge](https://github.com/Nilorc/dsoc-cyberchallenge)
+2. Guarda los settings y haz **Redeploy** del último commit de `main`
+3. Cada push a `main` redespliega solo
+
+`vercel.json` en la raíz refuerza framework Vite + `dist`.
 
 ### Variables de entorno
 
