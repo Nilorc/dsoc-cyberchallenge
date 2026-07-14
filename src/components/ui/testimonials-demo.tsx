@@ -24,6 +24,7 @@ const organizersData = [
     name: "OverPwnZ",
     role: "Co-organizador",
     imageSrc: "/aliados/overpwnz.png",
+    logoSize: "sm" as const,
     square: true,
     href: "https://www.overpwnz.com/",
   },
