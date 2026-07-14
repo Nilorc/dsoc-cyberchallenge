@@ -24,7 +24,6 @@ const organizersData = [
     name: "OverPwnZ",
     role: "Co-organizador",
     imageSrc: "/aliados/overpwnz.png",
-    logoSize: "sm" as const,
     square: true,
     href: "https://www.overpwnz.com/",
   },
@@ -34,6 +33,7 @@ const organizersData = [
     name: "IEEE ComSoc UPC",
     role: "Aliado",
     imageSrc: "/aliados/comsoc_upc.png",
+    logoSize: "sm" as const,
     href: "https://www.comsoc.lat/",
   },
   {
