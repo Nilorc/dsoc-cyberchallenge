@@ -8,6 +8,7 @@ const organizersData = [
     role: "Organizador",
     imageSrc: "/aliados/comsoc.png",
     logoSize: "sm" as const,
+    href: "https://www.comsoc-pucp.com/",
   },
   {
     id: 2,
@@ -24,14 +25,39 @@ const organizersData = [
     role: "Co-organizador",
     imageSrc: "/aliados/overpwnz.png",
     square: true,
+    href: "https://www.overpwnz.com/",
+  },
+  {
+    id: 4,
+    quote: "",
+    name: "IEEE ComSoc UPC",
+    role: "Aliado",
+    imageSrc: "/aliados/comsoc_upc.png",
+    href: "https://www.comsoc.lat/",
+  },
+  {
+    id: 5,
+    quote: "",
+    name: "Telecom PUCP",
+    role: "Aliado",
+    imageSrc: "/aliados/imagotipo-telecom-blanco.png",
+    href: "https://www.instagram.com/telecom_pucp/",
+  },
+  {
+    id: 6,
+    quote: "",
+    name: "AITEL PUCP",
+    role: "Aliado",
+    imageSrc: "/aliados/AITEL_ASOCIACION_logo.png",
+    href: "https://www.instagram.com/aitel.pucp/",
   },
 ];
 
 export default function TestimonialSectionDemo() {
   return (
     <TestimonialSection
-      title="Organizadores"
-      subtitle="Impulsado por la comunidad IEEE y OverPwnZ en la PUCP."
+      title="Organizadores y aliados"
+      subtitle="Impulsado por la comunidad IEEE, OverPwnZ y aliados de la carrera de Telecomunicaciones de la PUCP."
       testimonials={organizersData}
     />
   );
